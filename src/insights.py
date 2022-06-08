@@ -1,6 +1,10 @@
 from src.jobs import read
 
 
+def jobs(path):
+    return read(path)
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -16,10 +20,9 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    jobs = read(path)
     unique_job_types = []
 
-    for job in jobs:
+    for job in jobs(path):
         if job["job_type"] not in unique_job_types:
             unique_job_types.append(job["job_type"])
 
@@ -59,12 +62,12 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    jobs = read(path)
     unique_industries = []
 
-    for job in jobs:
+    for job in jobs(path):
         if job["industry"] not in unique_industries and job["industry"] != "":
             unique_industries.append(job["industry"])
+
     return unique_industries
 
 
