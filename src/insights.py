@@ -13,7 +13,16 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
+    from src.jobs import read
+
+    jobs = read(path)
+    unique_job_types = []
+
+    for job in jobs:
+        if job["job_type"] not in unique_job_types:
+            unique_job_types.append(job["job_type"])
+
+    return unique_job_types
 
 
 def filter_by_job_type(jobs, job_type):
