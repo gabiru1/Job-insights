@@ -26,4 +26,5 @@ def read(path):
 
         return filter_jobs
 
+
 read("src/jobs.csv")
